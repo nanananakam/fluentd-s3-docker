@@ -30,6 +30,17 @@ jobs:
       - run:
           name: Docker Push
           command: docker push nanananakam/fluentd-s3:aarch64
+      - run:
+          name: Prepare Oracle Cloud Docker Registry
+          command: |
+            mkdir -p ~/.docker
+            echo ${DOCKER_CONFIG_JSON} > ~/.docker/config.json
+            chmod 600 ~/.docker/config.json
+      - run:
+          name: Docker Push To Oracle Cloud
+          command: |
+            docker tag nanananakam/fluentd-s3:aarch64 kix.ocir.io/ax0w66dqmxlm/fluentd-s3
+            docker push kix.ocir.io/ax0w66dqmxlm/fluentd-s3
   push_manifest:
     machine:
       image: ubuntu-2004:current

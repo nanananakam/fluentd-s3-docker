@@ -1,4 +1,4 @@
-FROM fluent/fluentd:v1.14.0-1.0
+FROM fluent/fluentd:v1.14.0-debian-1.0
 
 # AWS
 ARG AWS_KEY_ID

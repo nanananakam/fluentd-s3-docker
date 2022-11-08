@@ -28,6 +28,7 @@ RUN addgroup -S fluent && adduser -S -G fluent fluent \
 
 COPY fluent.conf /fluentd/etc/
 COPY entrypoint.sh /bin/
+RUN chmod a+x /bin/entrypoint.sh
 
 ENV FLUENTD_CONF="fluent.conf"
 
